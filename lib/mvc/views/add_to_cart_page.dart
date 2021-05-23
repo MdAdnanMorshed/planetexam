@@ -11,6 +11,13 @@ class _AddToCartPageState extends State<AddToCartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
     appBar: AppBar(title: Text('Add to Cart '),),
-        body: Container(child: Text('add to cart '),));
+        body: Column(
+          children: [
+
+            Container(child: Text('Build Cart Item'),),
+            Container(child: Text('Total Price '),),
+            Container(child: Text('Place Order '),),
+          ],
+        ));
   }
 }

@@ -3,8 +3,8 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:planetexam/add_to_cart_page.dart';
-import 'package:planetexam/mvc/controllers.dart';
+import 'file:///F:/backup/bottomsheet/planetexam/lib/mvc/views/add_to_cart_page.dart';
+import 'file:///F:/backup/bottomsheet/planetexam/lib/mvc/controllers/product_controller.dart';
 class MyHomePage extends StatefulWidget {
 
   @override
