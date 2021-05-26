@@ -1,55 +1,55 @@
 
 import 'package:get/get.dart';
-import 'package:planetexam/mvc/models/models.dart';
+import 'package:planetexam/mvc/models/productinfo_model.dart';
 
 class AddToCartController extends GetxController{
-  var productCart = List<ProductCart>.empty(growable: true).obs;
+  var productInfoWithQty = List<ProductCart>.empty(growable: true).obs;
 
-  double get totalPrice => productCart.fold(
+  double get totalPrice => productInfoWithQty.fold(
       0,
           (sum, price) => sum = sum +
-          double.parse(price._productModel.basePrice) *
-              double.parse(price.pQty.toString()));
+          double.parse(price.productInfo.basePrice) *
+              double.parse(price.productQty.toString()));
 
   addToCart(NewProductModel _products){
-    for (var i = 0; i < productCart.length; i++) {
-      ProductCart temp = productCart[i];
+    for (var i = 0; i < productInfoWithQty.length; i++) {
+      ProductCart temp = productInfoWithQty[i];
 
-      if (temp._productModel.id == _products.id) {
-        productCart[i].pQty++;
+      if (temp.productInfo.id == _products.id) {
+        productInfoWithQty[i].productQty++;
         return;
       }
     }
 
     ProductCart itemCart = ProductCart(_products, 1);
-    productCart.add(itemCart);
+    productInfoWithQty.add(itemCart);
   }
 
   removeFromCart(int index){
-    productCart.removeAt(index);
+    productInfoWithQty.removeAt(index);
   }
   removeAllCart(){
-    productCart.clear();
+    productInfoWithQty.clear();
   }
   addToCartQtyIncrement( NewProductModel _products ,int index){
-    productCart[index].pQty++;
+    productInfoWithQty[index].productQty++;
   }
   addToCartQtyDecrement(NewProductModel _products ,int index){
-    productCart[index].pQty--;
+    productInfoWithQty[index].productQty--;
   }
 }
 
 class ProductCart{
-  NewProductModel _productModel;
-  int pQty ;
+  NewProductModel productInfo;
+  int productQty ;
 
-  ProductCart(this._productModel, this.pQty);
+  ProductCart(this.productInfo, this.productQty);
 
   void setQty(int i) {
     if (i < 1) {
-      pQty = i;
+      productQty = i;
     } else {
-      pQty = i;
+      productQty = i;
     }
   }
 }

@@ -1,7 +1,7 @@
 
 import 'package:get/get.dart';
-import 'package:planetexam/mvc/controllers/network_services/get_api.dart';
-import 'file:///F:/backup/bottomsheet/planetexam/lib/mvc/models/models.dart';
+import 'package:planetexam/mvc/controllers/network_services/get_service_api.dart';
+import 'package:planetexam/mvc/models/productinfo_model.dart';
 
 class ProductController extends GetxController{
   /// new Products

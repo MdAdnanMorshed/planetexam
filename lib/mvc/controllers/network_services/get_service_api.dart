@@ -1,9 +1,8 @@
 
 
 import 'dart:convert';
-
-import 'file:///F:/backup/bottomsheet/planetexam/lib/mvc/models/models.dart';
 import 'package:http/http.dart' as http;
+import 'package:planetexam/mvc/models/productinfo_model.dart';
 
 class ApiService {
 
