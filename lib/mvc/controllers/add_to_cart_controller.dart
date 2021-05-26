@@ -8,7 +8,7 @@ class AddToCartController extends GetxController{
   double get totalPrice => productInfoWithQty.fold(
       0,
           (sum, price) => sum = sum +
-          double.parse(price.productInfo.basePrice) *
+          double.parse(price.productInfo.basePrice.toString()) *
               double.parse(price.productQty.toString()));
 
   addToCart(NewProductModel _products){

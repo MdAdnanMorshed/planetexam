@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nice_button/NiceButton.dart';
 import 'package:planetexam/mvc/controllers/add_to_cart_controller.dart';
+import 'package:planetexam/mvc/views/product_checkout_page.dart';
 
 
 class AddToCartPage extends StatefulWidget {
@@ -17,20 +18,27 @@ class _AddToCartPageState extends State<AddToCartPage> {
     return Scaffold(
       appBar: AppBar(title: Text('Add to Cart '),),
       body: Container(
-        child: GetX<AddToCartController>(
-          builder: (cartController) {
-            return ListView.builder(
-              itemCount: cartController.productInfoWithQty.length,
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              itemBuilder: (context, index) {
-                return _listItem(cartController, index);
+        child:Column(
+          children: [
+            GetX<AddToCartController>(
+              builder: (cartController) {
+                return ListView.builder(
+                  itemCount: cartController.productInfoWithQty.length,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  itemBuilder: (context, index) {
+                    return _listItem(cartController, index);
+                  },
+                );
               },
-            );
-          },
-        ),
+            ),
+
+          ],
+        )
+
+
       ),
-      bottomNavigationBar: addToCartCalculation(),
+     bottomNavigationBar: addToCartCalculation(),
     );
   }
   Widget _listItem(AddToCartController cartController, int index) {
@@ -205,24 +213,19 @@ class _AddToCartPageState extends State<AddToCartPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              GetX<AddToCartController>(
-                builder: (cartController) {
-                  return Padding(
-                    padding: const EdgeInsets.all(2.0),
-                    child: Text(
-                        'Total Price : ' +
-                            '\u09F3' +
-                            cartController.totalPrice.toString(),
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.green)),
-                  );
-                },
-              ),
-            ],
+          GetX<AddToCartController>(
+            builder: (cartController) {
+              return Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: Text(
+                    'Total Price : ' +
+                        '\u09F3'+
+                        cartController.totalPrice.toString(),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green)),
+              );
+            },
           ),
           NiceButton(
             width: 120,
@@ -234,6 +237,7 @@ class _AddToCartPageState extends State<AddToCartPage> {
             icon: Icons.fact_check_outlined,
             onPressed: () {
               print('checkout ');
+              Get.to(CheckoutPage());
             },
 
           ),
